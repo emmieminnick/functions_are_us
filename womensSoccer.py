@@ -6,6 +6,16 @@
 
 import random
 
+def choose_team(games):
+    print({info['Home Team']})
+    for game, info in games.items():
+        print({info['Away Team']})
+
+    while True:
+        sChoice = int(input("Choose a team"))
+        selected_team = games.pop(sChoice-1)  
+        return selected_team
+
 # Function to generate a random number
 def generate_score() :
     return random.randrange(0, 10)
