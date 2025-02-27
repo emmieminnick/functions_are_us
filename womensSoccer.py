@@ -16,9 +16,7 @@ def menu() :
 
     return userChoice
 
-# Function to generate a random number
-def generate_score() :
-    return random.randrange(0, 10)
+
 
 # Function to determine the result of the game
 def determine_result(home_score, away_score) :
@@ -49,23 +47,39 @@ def main() :
     wins = 0
     losses = 0
 
-    # Loop through game
-    for iCount in range(1, num_games + 1) :
-        away_team = input("Enter the name of the away team for game " + str(iCount)  + ": ").upper()
-
-        # Generate scores and ensure no ties
+# STEP 4: Plays the game and updates the team record
+    def playGame (home_team, away_team, wins, losses) :
         while True :
-            home_score = generate_score()
-            away_score = generate_score()
+            home_score = random.randint(1,5)
+            away_score = random.randint(1,5)
             if home_score != away_score :
                 break
         
         # Determine result and update win/loss count
-        result = determine_result(home_score, away_score)
+        result = determine_result(home_score, away_score, wins, losses)
         if result == 'W' :
             wins += 1
         else :
             losses += 1
+        return result, wins, losses
+
+# STEP 5: calculates and displays final record
+def display_final_record(home_team, wins, losses):
+    print(f"\nFinal Season Record for {home_team}: {wins} - {losses}")
+    win_percentage = wins / (wins + losses)
+    if win_percentage >= 0.75:
+        print("Qualified for the NCAA Women's Soccer Tournament")
+    elif 0.50 <= win_percentage <= 0.74:
+        print("You had a good season")
+    else:
+        print("Your team needs to practice!")
+
+    
+    # Loop through game
+    for iCount in range(1, num_games + 1) :
+        away_team = input("Enter the name of the away team for game " + str(iCount)  + ": ").upper()
+
+    
 
         # Store game information in dictionary
         games[f"Game {iCount}"]= {
