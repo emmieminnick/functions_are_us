@@ -6,6 +6,16 @@
 
 import random
 
+def menu() :
+    print("Main Menu\n\n1. Choose your home team\n2. Play opponent team\n3. Show final record\n4. Quit\n")
+
+    userChoice = int(input("Enter an option (1-4): "))
+
+    while (userChoice < 0) or (userChoice > 4) :
+        userChoice = int(input("\nPlease enter a valid option (1-4): "))
+
+    return userChoice
+
 # Function to generate a random number
 def generate_score() :
     return random.randrange(0, 10)
