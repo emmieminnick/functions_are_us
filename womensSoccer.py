@@ -6,6 +6,21 @@
 
 import random
 
+
+def choose_team(games):
+    print({info['Home Team']})
+    for game, info in games.items():
+        print({info['Away Team']})
+
+    while True:
+        sChoice = int(input("Choose a team"))
+        selected_team = games.pop(sChoice-1)  
+        return selected_team
+
+# Function to generate a random number
+def generate_score() :
+    return random.randrange(0, 10)
+
 def menu() :
     print("Main Menu\n\n1. Choose your home team\n2. Play opponent team\n3. Show final record\n4. Quit\n")
 
@@ -15,6 +30,7 @@ def menu() :
         userChoice = int(input("\nPlease enter a valid option (1-4): "))
 
     return userChoice
+
 
 
 
