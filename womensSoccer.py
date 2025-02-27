@@ -16,9 +16,20 @@ def determine_result(home_score, away_score) :
         return 'W'
     else :
         return 'L'
-    
+
+def introduction() :
+    print("Welcome to the game! You will be prompted to enter your name. Then, you will choose a home team and opponent using a menu and generate random scores to display the team's final record.")
+def get_name() :
+    user_name = input("Please enter your name: ").capitalize()
+    return user_name
+
 # This is the main function
 def main() :
+
+    introduction()
+    user_name = get_name()
+    print(f"Hello, {user_name}! Welcome to the game.")
+
     # Get the home team name and number of games
     home_team = input("Enter the name of your team: ").upper()
     num_games = int(input("Enter the number of teams that " + home_team + " will play: "))
