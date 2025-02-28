@@ -15,11 +15,11 @@ def playGame (home_team, away_team, wins, losses) :
             break
         
     # Determine result and update win/loss count
-    result = determine_result(home_score, away_score, wins, losses)
-    if result == 'W' :
-        wins += 1
-    else :
-        losses += 1
+    result = determine_result(home_score, away_score)
+    if home_score > away_score:
+        result = 'W'
+    else:
+        result = 'L'
     return result, wins, losses
 
 # STEP 5: calculates and displays final record
@@ -73,6 +73,11 @@ def get_name() :
 # This is the main function
 def main() :
 
+# Dictionary to store game information
+    games = {}
+    wins = 0
+    losses = 0
+
     introduction()
     user_name = get_name()
     print(f"Hello, {user_name}! Welcome to the game.")
@@ -81,14 +86,11 @@ def main() :
     home_team = input("Enter the name of your team: ").upper()
     num_games = int(input("Enter the number of teams that " + home_team + " will play: "))
 
-    # Dictionary to store game information
-    games = {}
-    wins = 0
-    losses = 0
-
     # Loop through game
     for iCount in range(1, num_games + 1) :
         away_team = input("Enter the name of the away team for game " + str(iCount)  + ": ").upper()
+
+        result, home_score, away_score = playGame(home_team, away_team, wins, losses)
 
         # Store game information in dictionary
         games[f"Game {iCount}"]= {
@@ -99,23 +101,17 @@ def main() :
             "Result": result
         }
 
+        if result == 'W':
+            wins += 1
+        else:
+            losses += 1
+
     # Print game information
     for game, info in games.items() :
         print(f"{game}: {info['Home Team']} {info['Home Score']} - {info['Away Team']} {info['Away Score']} ({info['Result']})")
         
     # Print season record
     print(f"Final season record: {home_team} {str(wins) + "-" + str(losses)}")
-
-    # Print final message
-    total_games = wins + losses
-    win_percentage = wins/total_games
-
-    if win_percentage >= 0.75 :
-        print("Qualified for the NCAA Women's Soccer Tournament")
-    elif win_percentage >= 0.50 :
-        print("You had a good season")
-    else :
-        print("Your team needs to practice!")
 
 # Run the main function
 if __name__ == "__main__":
