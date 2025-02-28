@@ -33,15 +33,33 @@ def display_final_record(home_team, wins, losses):
     else:
         print("Your team needs to practice!")
 
-def choose_team(games):
-    print({info['Home Team']})
-    for game, info in games.items():
-        print({info['Away Team']})
+# STEP 3: Choose teams
 
-    while True:
-        sChoice = int(input("Choose a team"))
-        selected_team = games.pop(sChoice-1)  
-        return selected_team
+# Step 3a: Create list of all teams
+
+def create_list(games):
+    global home_team
+    lstGames = [home_team]
+    for game, info in games.items():
+        lstGames.append(info['Away Team'])
+    return lstGames
+
+# Step 3b: Display list and have user choose an item
+
+def select_team(list):
+    print("\nChoose a team below:")
+    for index, item in enumerate(finalList, start=1):
+        print(f"{index}.{item}")
+
+    sChoice = int(input("\nEnter the number of the team you want: "))
+    selected_team = finalList.pop(sChoice-1)  
+    return selected_team
+
+# To call the functions use this format:
+#finalList = create_list(games)
+
+#print(select_team(finalList))
+#print(select_team(finalList))
 
 # Function to generate a random number
 def generate_score() :
