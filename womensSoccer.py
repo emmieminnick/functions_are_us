@@ -42,8 +42,11 @@ def select_team(list):
     for index, item in enumerate(list, start=1):
         print(f"{index}.{item}")
 
-    sChoice = int(input("\nEnter the number of the team: "))
-    selected_team = list.pop(sChoice-1)  
+    try:
+        iChoice = int(input("\nEnter the number of the team: "))
+        selected_team = list.pop(iChoice-1)  
+    except:
+        selected_team = list.pop(0)
     return selected_team
 
 # To call the functions use this format:
