@@ -24,18 +24,7 @@ def menu() :
 
     return userChoice
 
-# STEP 3: Choose teams
-
-# Step 3a: Create list of all teams
-
-# def create_list(games):
-    # global home_team
-    # lstGames = [home_team]
-    #for game, info in games.items():
-        #lstGames.append(info['Away Team'])
-    #return lstGames
-
-# Step 3b: Display list and have user choose an item
+# STEP 3: Create list and choose teams. Remove the team that was selected.
 
 def select_team(list):
     print("\nChoose a team below:")
@@ -48,12 +37,6 @@ def select_team(list):
     except:
         selected_team = list.pop(0)
     return selected_team
-
-# To call the functions use this format:
-#finalList = create_list(games)
-
-#print(select_team(finalList))
-#print(select_team(finalList))
 
 # STEP 4: Plays the game and updates the team record
 def playGame (home_team, away_team) :
@@ -136,41 +119,3 @@ while user_choice != 4 :
         user_choice = menu()
 
 print(f"Thanks for playing, {user_name}!")
-
-
-
-
-    # Get the home team name and number of games
-    # home_team = input("Enter the name of your team: ").upper()
-    # num_games = int(input("Enter the number of teams that " + home_team + " will play: "))
-
-    # Loop through game
-    # for iCount in range(1, num_games + 1) :
-        # away_team = input("Enter the name of the away team for game " + str(iCount)  + ": ").upper()
-
-        # result, home_score, away_score = playGame(home_team, away_team, wins, losses)
-
-        # Store game information in dictionary
-        # games[f"Game {iCount}"]= {
-            # "Home Team": home_team,
-            # "Home Score": home_score,
-            # "Away Team": away_team,
-            # "Away Score": away_score,
-            # "Result": result
-        #}
-
-        # if result == 'W':
-            # wins += 1
-        # else:
-            # losses += 1
-
-    # Print game information
-    # for game, info in games.items() :
-        # print(f"{game}: {info['Home Team']} {info['Home Score']} - {info['Away Team']} {info['Away Score']} ({info['Result']})")
-        
-    # Print season record
-    # print(f"Final season record: {home_team} {str(wins) + "-" + str(losses)}")
-
-# Run the main function
-# if __name__ == "__main__":
-    # main()
